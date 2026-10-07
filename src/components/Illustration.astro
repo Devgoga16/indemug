@@ -1,0 +1,170 @@
+---
+// Ilustraciones de reemplazo mientras no haya fotos reales.
+import type { FurnitureKind } from '../data/site';
+
+interface Props {
+  kind: FurnitureKind;
+  color?: string;
+  label?: string;
+}
+
+const defaults: Record<FurnitureKind, string> = {
+  bed: '#9a6038',
+  wardrobe: '#e8dcc8',
+  kitchen: '#5b5f63',
+  console: '#a8673a',
+  cabinet: '#8a5530',
+  sofa: '#d8d2c8',
+  desk: '#c9a77c',
+  chair: '#3f3a36',
+  pallet: '#c8975f',
+  tools: '#e2711d',
+};
+
+const { kind, label = '' } = Astro.props;
+const c = Astro.props.color ?? defaults[kind];
+const dark = 'rgba(0,0,0,.18)';
+const line = '#2a2522';
+---
+
+<svg viewBox="0 0 200 150" role="img" aria-label={label} class="illus">
+  <ellipse cx="100" cy="138" rx="78" ry="5" fill="rgba(0,0,0,.08)" />
+  {kind === 'bed' && (
+    <g>
+      <rect x="40" y="40" width="120" height="62" rx="4" fill={c} />
+      <rect x="48" y="48" width="104" height="46" rx="2" fill={dark} />
+      <rect x="30" y="92" width="140" height="34" rx="4" fill={c} />
+      <rect x="34" y="84" width="132" height="14" rx="6" fill="#f4f1ec" />
+      <rect x="46" y="72" width="44" height="16" rx="7" fill="#fff" />
+      <rect x="110" y="72" width="44" height="16" rx="7" fill="#fff" />
+      <path d="M100 86h66v16H100z" fill="#7d8790" />
+      <rect x="6" y="104" width="22" height="18" rx="2" fill={c} />
+      <rect x="172" y="104" width="22" height="18" rx="2" fill={c} />
+      <path d="M17 104V88" stroke={line} stroke-width="1.5" />
+      <path d="M10 88h14l-3-10h-8z" fill="#f4efe6" />
+    </g>
+  )}
+  {kind === 'wardrobe' && (
+    <g>
+      <rect x="45" y="14" width="110" height="118" rx="3" fill={c} />
+      <path d="M81.5 14v118M118.5 14v118" stroke={dark} stroke-width="2" />
+      <rect x="49" y="18" width="30" height="110" fill="rgba(255,255,255,.25)" />
+      <rect x="121" y="18" width="30" height="80" fill="rgba(0,0,0,.06)" />
+      <path d="M121 40h30M121 62h30M121 84h30" stroke={dark} stroke-width="2" />
+      <path d="M121 104h30M121 116h30" stroke={dark} stroke-width="2" />
+      <rect x="125" y="27" width="10" height="13" fill="#d65b3d" />
+      <rect x="137" y="29" width="10" height="11" fill="#d65b3d" />
+      <path d="M77 66v12M86 66v12M114 66v12" stroke={line} stroke-width="2.5" stroke-linecap="round" />
+    </g>
+  )}
+  {kind === 'kitchen' && (
+    <g>
+      <rect x="20" y="20" width="160" height="34" rx="2" fill={c} />
+      <path d="M60 20v34M100 20v34M140 20v34" stroke="rgba(255,255,255,.2)" stroke-width="2" />
+      <rect x="20" y="78" width="160" height="6" fill="#e9e4dc" />
+      <rect x="20" y="84" width="160" height="48" rx="2" fill={c} />
+      <path d="M60 84v48M100 84v48M140 84v48" stroke="rgba(255,255,255,.2)" stroke-width="2" />
+      <rect x="106" y="64" width="28" height="14" rx="2" fill="#c9ced3" />
+      <path d="M120 64V54q0-6 6-6" stroke="#9aa1a8" stroke-width="2.5" fill="none" />
+      <path d="M44 40h8M84 40h8M124 40h8M164 40h8M44 96h8M84 96h8M124 96h8M164 96h8" stroke="#d6d6d6" stroke-width="2.5" stroke-linecap="round" />
+    </g>
+  )}
+  {kind === 'console' && (
+    <g>
+      <rect x="60" y="14" width="80" height="44" rx="3" fill="#7a4a28" />
+      <rect x="66" y="20" width="68" height="32" fill="#3c4146" />
+      <rect x="24" y="66" width="152" height="8" rx="2" fill={c} />
+      <rect x="28" y="74" width="144" height="56" fill={c} />
+      <path d="M28 94h144" stroke={dark} stroke-width="2" />
+      <path d="M76 74v20M124 74v20" stroke={dark} stroke-width="2" />
+      <path d="M48 84h8M96 84h8M144 84h8" stroke={line} stroke-width="2.5" stroke-linecap="round" />
+      <rect x="34" y="100" width="62" height="24" fill="rgba(0,0,0,.25)" />
+      <rect x="104" y="100" width="62" height="24" fill="rgba(0,0,0,.25)" />
+      <path d="M38 58v8h8v-8zM154 54v12h7V54z" fill="#e7e1d6" />
+    </g>
+  )}
+  {kind === 'cabinet' && (
+    <g>
+      <rect x="54" y="10" width="92" height="8" rx="2" fill={c} />
+      <rect x="58" y="18" width="84" height="114" fill={c} />
+      <rect x="64" y="24" width="34" height="58" fill="#cfe0e4" opacity=".7" />
+      <rect x="102" y="24" width="34" height="58" fill="#cfe0e4" opacity=".7" />
+      <path d="M64 50h34M102 50h34" stroke={dark} stroke-width="2" />
+      <circle cx="80" cy="44" r="5" fill="#fff" />
+      <circle cx="118" cy="74" r="5" fill="#fff" />
+      <rect x="64" y="88" width="72" height="12" fill="rgba(0,0,0,.15)" />
+      <rect x="64" y="104" width="34" height="24" fill="rgba(0,0,0,.15)" />
+      <rect x="102" y="104" width="34" height="24" fill="rgba(0,0,0,.15)" />
+      <path d="M96 116h4" stroke={line} stroke-width="2.5" stroke-linecap="round" />
+    </g>
+  )}
+  {kind === 'sofa' && (
+    <g>
+      <rect x="30" y="50" width="140" height="50" rx="14" fill={c} />
+      <rect x="20" y="70" width="28" height="52" rx="12" fill={c} />
+      <rect x="152" y="70" width="28" height="52" rx="12" fill={c} />
+      <rect x="44" y="88" width="112" height="28" rx="8" fill={c} stroke={dark} />
+      <path d="M100 88v28" stroke={dark} />
+      <path d="M36 122v10M164 122v10" stroke={line} stroke-width="3" />
+    </g>
+  )}
+  {kind === 'desk' && (
+    <g>
+      <rect x="20" y="62" width="160" height="8" rx="2" fill={c} />
+      <rect x="128" y="70" width="44" height="60" fill={c} />
+      <path d="M128 90h44M128 110h44" stroke={dark} stroke-width="2" />
+      <path d="M146 80h8M146 100h8M146 120h8" stroke={line} stroke-width="2.5" stroke-linecap="round" />
+      <path d="M30 70v60" stroke={c} stroke-width="6" />
+      <rect x="54" y="26" width="52" height="34" rx="3" fill="#2f3438" />
+      <rect x="77" y="58" width="6" height="4" fill="#2f3438" />
+      <rect x="116" y="50" width="12" height="12" rx="2" fill="#7c8c63" />
+    </g>
+  )}
+  {kind === 'chair' && (
+    <g>
+      <rect x="70" y="22" width="60" height="50" rx="8" fill={c} />
+      <rect x="64" y="76" width="72" height="14" rx="5" fill={c} />
+      <path d="M72 90l-6 42M128 90l6 42M86 90v34M114 90v34" stroke={line} stroke-width="3.5" stroke-linecap="round" />
+    </g>
+  )}
+  {kind === 'pallet' && (
+    <g>
+      <rect x="20" y="62" width="160" height="10" rx="1" fill={c} />
+      <rect x="20" y="76" width="160" height="10" rx="1" fill={c} />
+      <rect x="20" y="90" width="160" height="10" rx="1" fill={c} />
+      <rect x="24" y="100" width="22" height="18" fill={c} />
+      <rect x="89" y="100" width="22" height="18" fill={c} />
+      <rect x="154" y="100" width="22" height="18" fill={c} />
+      <rect x="24" y="100" width="22" height="18" fill={dark} />
+      <rect x="89" y="100" width="22" height="18" fill={dark} />
+      <rect x="154" y="100" width="22" height="18" fill={dark} />
+      <rect x="20" y="118" width="160" height="10" rx="1" fill={c} />
+      <path d="M20 72h160M20 86h160" stroke={dark} />
+      <g fill={line} opacity=".5">
+        <circle cx="35" cy="67" r="1.4" /><circle cx="100" cy="67" r="1.4" /><circle cx="165" cy="67" r="1.4" />
+        <circle cx="35" cy="81" r="1.4" /><circle cx="100" cy="81" r="1.4" /><circle cx="165" cy="81" r="1.4" />
+        <circle cx="35" cy="95" r="1.4" /><circle cx="100" cy="95" r="1.4" /><circle cx="165" cy="95" r="1.4" />
+      </g>
+    </g>
+  )}
+  {kind === 'tools' && (
+    <g>
+      <rect x="22" y="96" width="156" height="10" rx="1" fill="#c8975f" />
+      <rect x="22" y="110" width="156" height="10" rx="1" fill="#c8975f" />
+      <rect x="22" y="96" width="156" height="24" fill="rgba(0,0,0,.08)" />
+      <path d="M80 30h56a6 6 0 0 1 6 6v14a6 6 0 0 1-6 6H80z" fill={c} />
+      <rect x="60" y="38" width="22" height="10" rx="2" fill="#555" />
+      <path d="M100 56l-6 32h18l4-32z" fill="#3a3a3a" />
+      <path d="M58 43H46" stroke="#555" stroke-width="3" stroke-linecap="round" />
+      <path d="M44 92l-4-6M52 92l2-8" stroke="#888" stroke-width="2" stroke-linecap="round" />
+    </g>
+  )}
+</svg>
+
+<style>
+  .illus {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>

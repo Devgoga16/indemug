@@ -1,0 +1,28 @@
+---
+import Illustration from './Illustration.astro';
+import type { FurnitureKind } from '../data/site';
+
+interface Props {
+  kind: FurnitureKind;
+  alt: string;
+  image?: string;
+  color?: string;
+}
+
+const { kind, alt, image, color } = Astro.props;
+---
+
+{image ? (
+  <img src={image} alt={alt} loading="lazy" decoding="async" />
+) : (
+  <Illustration kind={kind} color={color} label={alt} />
+)}
+
+<style>
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>

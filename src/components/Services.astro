@@ -1,0 +1,129 @@
+---
+import Media from './Media.astro';
+import { services } from '../data/site';
+
+const [first, second] = services.items;
+---
+
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="intro reveal">
+      <div class="copy">
+        <span class="eyebrow">{services.eyebrow}</span>
+        <h2 class="section-title">{services.title}</h2>
+        <p>{services.text}</p>
+        <a class="btn" href={services.cta.href} target="_blank" rel="noopener">
+          {services.cta.label}<span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="frame tall">
+        <Media kind={first.kind} image={first.image} alt={first.title} color="#efe6d8" />
+      </div>
+      <div class="frame">
+        <Media kind={second.kind} image={second.image} alt={second.title} />
+      </div>
+    </div>
+
+    <ol class="list">
+      {services.items.map((s, i) => (
+        <li class="item reveal" style={`transition-delay:${i * 80}ms`}>
+          <div class="icon">
+            <Media kind={s.kind} image={s.image} alt="" />
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .intro {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1fr;
+    align-items: center;
+    gap: clamp(16px, 3vw, 32px);
+    padding-inline: clamp(0px, 4vw, 48px);
+  }
+
+  .copy {
+    display: grid;
+    gap: 16px;
+    justify-items: start;
+  }
+
+  .copy p {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 340px;
+  }
+
+  .frame {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #f3ece4;
+    aspect-ratio: 4 / 4.2;
+    padding: 18px;
+  }
+
+  .frame.tall {
+    aspect-ratio: 4 / 5;
+    background: #e9d9c6;
+  }
+
+  .list {
+    list-style: none;
+    padding: 0;
+    margin: clamp(40px, 6vw, 64px) 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .item {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .item:hover {
+    border-color: transparent;
+    box-shadow: var(--shadow);
+  }
+
+  .icon {
+    width: 72px;
+    height: 54px;
+    margin-bottom: 14px;
+  }
+
+  .item h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+
+  .item p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  @media (max-width: 980px) {
+    .intro {
+      grid-template-columns: 1fr 1fr;
+    }
+    .copy {
+      grid-column: 1 / -1;
+    }
+    .list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

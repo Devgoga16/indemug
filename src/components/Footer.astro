@@ -1,0 +1,189 @@
+---
+import { footer, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="top">
+      <div class="brand">
+        <a href="#inicio" class="logo">{site.name}<span>sac.</span></a>
+        <p>{footer.about}</p>
+        <ul class="social">
+          {site.social.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener">{s.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3>Contáctenos</h3>
+        <dl>
+          <dt>Dirección</dt>
+          {site.address.map((line) => <dd>{line}</dd>)}
+          <dt>Teléfonos</dt>
+          <dd>
+            {site.phones.map((p, i) => (
+              <>
+                {i > 0 && ' / '}
+                <a href={p.href}>{p.label}</a>
+              </>
+            ))}
+          </dd>
+          <dt>Correo</dt>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </dl>
+      </div>
+
+      <div class="col">
+        <h3>Horario de atención</h3>
+        <dl>
+          {site.hours.map((h) => (
+            <>
+              <dt>{h.days}</dt>
+              <dd>{h.time}</dd>
+            </>
+          ))}
+        </dl>
+      </div>
+
+      {footer.columns.map((col) => (
+        <div class="col">
+          <h3>{col.title}</h3>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a href={l.href}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="bottom">
+      <span>© {year} {site.legalName}. Todos los derechos reservados.</span>
+      <span>Lima, Perú</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.72);
+    padding: clamp(48px, 7vw, 80px) 0 28px;
+    margin-top: clamp(20px, 4vw, 40px);
+    font-size: 13px;
+  }
+
+  .top {
+    display: grid;
+    grid-template-columns: 1.6fr 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: #fff;
+  }
+
+  .logo span {
+    font-size: 15px;
+    margin-left: 4px;
+    opacity: 0.7;
+  }
+
+  .brand p {
+    margin-top: 14px;
+    max-width: 300px;
+  }
+
+  .social {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    gap: 8px;
+  }
+
+  .social a {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .social a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    color: #fff;
+    margin-top: 10px;
+  }
+
+  dt:first-child {
+    margin-top: 0;
+  }
+
+  dd {
+    margin: 2px 0 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+  }
+
+  @media (max-width: 980px) {
+    .top {
+      grid-template-columns: 1fr 1fr;
+    }
+    .brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .top {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

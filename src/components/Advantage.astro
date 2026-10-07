@@ -1,0 +1,144 @@
+---
+import { advantage } from '../data/site';
+---
+
+<section class="section" id="clientes">
+  <div class="container">
+    <div class="panel reveal">
+      <h2 class="section-title title">{advantage.title}</h2>
+
+      <div class="cards">
+        <div class="card side">
+          <span class="badge" aria-hidden="true">✓</span>
+          <strong>{advantage.stats[0].value}</strong>
+          <p>{advantage.stats[0].label}</p>
+        </div>
+        <blockquote class="card main">
+          <span class="badge" aria-hidden="true">“</span>
+          <p>{advantage.text}</p>
+        </blockquote>
+        <div class="card side">
+          <span class="badge" aria-hidden="true">★</span>
+          <strong>{advantage.stats[1].value}</strong>
+          <p>{advantage.stats[1].label}</p>
+        </div>
+      </div>
+
+      <div class="clients">
+        <h3>{advantage.clientsTitle}</h3>
+        <ul>
+          {advantage.clients.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .title {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr 1fr;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    margin: 0;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 40px 24px 28px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .main {
+    padding: 48px clamp(20px, 3vw, 40px) 36px;
+    transform: translateY(-12px);
+  }
+
+  .main p {
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    translate: -50% 0;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .side strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 1;
+  }
+
+  .side p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .clients {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .clients h3 {
+    font-size: 18px;
+  }
+
+  .clients ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .clients li {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #8a827a;
+  }
+
+  @media (max-width: 860px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 36px;
+    }
+    .main {
+      grid-column: 1 / -1;
+      order: -1;
+      transform: none;
+    }
+  }
+</style>

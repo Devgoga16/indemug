@@ -1,0 +1,188 @@
+---
+import Media from './Media.astro';
+import { products, whatsappLink } from '../data/site';
+---
+
+<section class="section" id="productos">
+  <div class="container">
+    <div class="panel reveal">
+      <div class="head">
+        <div>
+          <h2 class="section-title">{products.title}</h2>
+          <p class="sub">{products.text}</p>
+        </div>
+        <div class="filters" role="tablist" aria-label="Filtrar productos">
+          {products.filters.map((f, i) => (
+            <button role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-filter={f}>
+              {f}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <ul class="grid" data-grid>
+        {products.items.map((p) => (
+          <li class="card" data-material={p.material}>
+            <div class="thumb">
+              <Media kind={p.kind} image={p.image} color={p.color} alt={p.name} />
+            </div>
+            <div class="info">
+              <div>
+                <h3>{p.name}</h3>
+                <span>{p.material}</span>
+              </div>
+              <a
+                class="quote"
+                href={whatsappLink(`Hola INDEMUG, quisiera cotizar: ${p.name}.`)}
+                target="_blank"
+                rel="noopener"
+                aria-label={`Cotizar ${p.name}`}
+              >
+                Cotizar
+              </a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .filters button {
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 13px;
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .filters button:hover {
+    color: var(--ink);
+  }
+
+  .filters button[aria-selected='true'] {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 12px;
+    box-shadow: var(--shadow);
+    animation: pop 0.35s ease both;
+  }
+
+  .card[hidden] {
+    display: none;
+  }
+
+  .thumb {
+    aspect-ratio: 1 / 0.85;
+    border-radius: 12px;
+    background: var(--cream-2);
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 4px 4px;
+  }
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .info span {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .quote {
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: #fff;
+    transition: background 0.2s ease;
+  }
+
+  .quote:hover {
+    background: var(--accent);
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+
+  @media (max-width: 980px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-grid] [data-material]');
+  const all = buttons[0]?.dataset.filter;
+
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+      cards.forEach((c) => (c.hidden = f !== all && c.dataset.material !== f));
+    }),
+  );
+</script>
