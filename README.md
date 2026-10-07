@@ -16,13 +16,17 @@ Landing page de INDEMUG S.A.C. hecha con [Astro](https://astro.build).
 Todos los textos, teléfonos, horarios, servicios y productos están en
 `src/data/site.ts`. No hace falta tocar los componentes.
 
-## Agregar fotos reales
+## Imágenes
 
-Por ahora los productos usan ilustraciones SVG de reemplazo. Para usar fotos:
+Las fotos están en `public/images/` (formato WebP). Hay fotos propias de INDEMUG
+y fotos de Unsplash; el detalle está en `public/images/CREDITOS.md`.
 
-1. Copia la imagen a `public/images/` (por ejemplo `public/images/closet.jpg`).
-2. En `src/data/site.ts`, agrega `image: '/images/closet.jpg'` al producto,
-   línea o servicio correspondiente.
+Para cambiar una foto:
+
+1. Copia la imagen a `public/images/` (por ejemplo `public/images/closet.webp`).
+2. En `src/data/site.ts`, cambia el campo `image` del producto, línea o servicio.
+
+Si un elemento no tiene `image`, se muestra una ilustración SVG de reemplazo.
 
 ## Estructura
 

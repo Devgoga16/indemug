@@ -53,18 +53,19 @@ export const hero = {
   text: 'Cuidamos tanto los aspectos estéticos como los funcionales, a precios competitivos.',
   primary: { label: 'Solicitar cotización', href: whatsappLink() },
   secondary: { label: 'Ver productos', href: '#productos' },
+  image: '/images/hero.webp',
 };
 
 export const lines = {
   title: 'Nuestras líneas',
   link: { label: 'Ver productos', href: '#productos' },
   items: [
-    { name: 'Dormitorios', note: 'Camas y veladores', kind: 'bed' },
-    { name: 'Closets', note: 'Roperos a medida', kind: 'wardrobe' },
-    { name: 'Cocinas', note: 'Melamina', kind: 'kitchen' },
-    { name: 'Aparadores', note: 'Madera', kind: 'console' },
-    { name: 'Oficina', note: 'Escritorios', kind: 'desk' },
-    { name: 'Parihuelas', note: 'Industria', kind: 'pallet' },
+    { name: 'Dormitorios', note: 'Camas y veladores', kind: 'bed', image: '/images/dormitorio.webp' },
+    { name: 'Closets', note: 'Roperos a medida', kind: 'wardrobe', image: '/images/closet-empotrado.webp' },
+    { name: 'Cocinas', note: 'Melamina', kind: 'kitchen', image: '/images/cocina.webp' },
+    { name: 'Aparadores', note: 'Madera', kind: 'console', image: '/images/aparador.webp' },
+    { name: 'Oficina', note: 'Escritorios', kind: 'desk', image: '/images/oficina.webp' },
+    { name: 'Parihuelas', note: 'Industria', kind: 'pallet', image: '/images/parihuela-estandar.webp' },
   ] as { name: string; note: string; kind: FurnitureKind; image?: string }[],
 };
 
@@ -73,31 +74,36 @@ export const services = {
   title: 'Fabricamos lo que\ntu espacio necesita',
   text:
     'Fabricamos muebles de madera, melamina y parihuelas de madera. Adicionalmente brindamos el servicio de reparación de paletas de madera.',
+  images: ['/images/servicio-melamina-alto.webp', '/images/servicio-madera.webp'],
   cta: { label: 'Cotizar ahora', href: whatsappLink('Hola INDEMUG, quisiera información sobre sus servicios.') },
   items: [
     {
       title: 'Muebles de melamina',
       text:
         'La melamina es un material muy duradero, pero también ligero y menos costoso que otros materiales usados en muebles. Además puede soportar altas temperaturas.',
-      kind: 'wardrobe',
+      kind: 'kitchen',
+      image: '/images/melamina.webp',
     },
     {
       title: 'Muebles de madera',
       text:
         'Los muebles de madera son fáciles de limpiar y arreglar. La madera es mucho más duradera que otros materiales usados en este rubro.',
-      kind: 'cabinet',
+      kind: 'wardrobe',
+      image: '/images/madera.webp',
     },
     {
       title: 'Parihuelas de madera',
       text:
         'Contamos con pistolas neumáticas de última generación para el clavado de las maderas con clavos espiralados y engomados con polímero sellador de la mejor calidad.',
       kind: 'pallet',
+      image: '/images/industria.webp',
     },
     {
       title: 'Reparación de paletas',
       text:
         'Amplia experiencia en la reparación de paletas aplicando siempre el know-how y la maquinaria más avanzada del mercado. ¡Alargamos la vida de sus paletas!',
       kind: 'tools',
+      image: '/images/reparacion.webp',
     },
   ] as { title: string; text: string; kind: FurnitureKind; image?: string }[],
 };
@@ -107,18 +113,19 @@ export const products = {
   text: 'Un amplio catálogo con condiciones comerciales que solo encontrarás con nosotros.',
   filters: ['Todos', 'Melamina', 'Madera', 'Parihuelas'],
   items: [
-    { name: 'Closet empotrado', material: 'Melamina', kind: 'wardrobe', color: '#e8dcc8' },
-    { name: 'Cocina integral', material: 'Melamina', kind: 'kitchen', color: '#5b5f63' },
-    { name: 'Aparador rústico', material: 'Madera', kind: 'console', color: '#a8673a' },
-    { name: 'Vitrina clásica', material: 'Madera', kind: 'cabinet', color: '#8a5530' },
-    { name: 'Cama con veladores', material: 'Madera', kind: 'bed', color: '#9a6038' },
-    { name: 'Escritorio de oficina', material: 'Melamina', kind: 'desk', color: '#d9c6a5' },
-    { name: 'Parihuela estándar', material: 'Parihuelas', kind: 'pallet', color: '#c8975f' },
-    { name: 'Parihuela reforzada', material: 'Parihuelas', kind: 'pallet', color: '#a77a45' },
+    { name: 'Closet empotrado', material: 'Melamina', kind: 'wardrobe', color: '#e8dcc8', image: '/images/closet-empotrado.webp' },
+    { name: 'Cocina integral', material: 'Melamina', kind: 'kitchen', color: '#5b5f63', image: '/images/cocina-integral.webp' },
+    { name: 'Aparador rústico', material: 'Madera', kind: 'console', color: '#a8673a', image: '/images/aparador-rustico.webp' },
+    { name: 'Vitrina clásica', material: 'Madera', kind: 'cabinet', color: '#8a5530', image: '/images/vitrina.webp' },
+    { name: 'Cama con veladores', material: 'Madera', kind: 'bed', color: '#9a6038', image: '/images/cama-veladores.webp' },
+    { name: 'Escritorio de oficina', material: 'Melamina', kind: 'desk', color: '#d9c6a5', image: '/images/escritorio.webp' },
+    { name: 'Parihuela estándar', material: 'Parihuelas', kind: 'pallet', color: '#c8975f', image: '/images/parihuela-estandar.webp' },
+    { name: 'Parihuela reforzada', material: 'Parihuelas', kind: 'pallet', color: '#a77a45', image: '/images/parihuela-reforzada.webp' },
   ] as { name: string; material: string; kind: FurnitureKind; color: string; image?: string }[],
 };
 
 export const about = {
+  image: '/images/banner.webp',
   title: 'Hacemos realidad\nlos espacios que imaginas',
   text:
     'INDEMUG S.A.C. es una empresa peruana dedicada a la fabricación de muebles de melamina y madera, así como a la fabricación y reparación de paletas de madera para la industria en general. Con 8 años de presencia en el mercado peruano, gracias a nuestro equipo de profesionales y mano de obra calificada, nos hemos posicionado como una empresa que ofrece productos y servicios de calidad.',
@@ -161,6 +168,7 @@ export const cta = {
   button: { label: 'Cotizar por WhatsApp', href: whatsappLink() },
   note: 'Cotización sin compromiso',
   badge: 'Calidad certificada por SGS',
+  image: '/images/cta.webp',
 };
 
 export const footer = {
